@@ -19,19 +19,20 @@ public class App {
         WebSocketClient webSocketClient = javaClient.getClient(token);
         if (webSocketClient != null) {
             System.out.println("getWebSocketClient succeed");
-            TelisMeta telisMeta = new TelisMeta ();
+            TelisMeta telisMeta = new TelisMeta();
             AudioFormat audioFormat = new AudioFormat ();
             audioFormat.setType("WAV");
             audioFormat.setAudioChannel(1);
             audioFormat.setSampleRate(16000);
             telisMeta.setQuestion("question test");
-            telisMeta.setAudioType(6);
+            telisMeta.setType(6);
             telisMeta.setAudioFormat(audioFormat);
             String jsonString = JSON.toJSONString(telisMeta);
             System.out.printf("send meta:%s\n", jsonString);
             // send meta
             webSocketClient.send(jsonString.getBytes());
             byte[] bytes = ReadFromFile.readFileByBytes("/Users/chaojiangyou/Desktop/question2.wav");
+            System.out.printf("send audio bytes:%d", bytes.length);
             // send audio
             webSocketClient.send(bytes);
             // send EOS flag

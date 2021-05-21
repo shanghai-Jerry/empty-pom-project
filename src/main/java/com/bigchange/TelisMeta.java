@@ -12,7 +12,7 @@ public class TelisMeta {
   private AudioFormat audioFormat;
   private String question;
   @JSONField(name = "type")
-  private int audioType;
+  private int type;
   public AudioFormat getAudioFormat() {
     return audioFormat;
   }
@@ -29,11 +29,11 @@ public class TelisMeta {
     this.question = question;
   }
 
-  public int getAudioType() {
-    return audioType;
+  public int getType() {
+    return type;
   }
 
-  public void setAudioType(int audioType) {
-    this.audioType = audioType;
+  public void setType(int type) {
+    this.type = type;
   }
 }

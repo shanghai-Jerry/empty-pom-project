@@ -6,16 +6,9 @@ package com.bigchange;
  * @Last Modified time: 2021/5/21
  */
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
-import java.io.Reader;
 
 public class ReadFromFile {
   /**
@@ -23,18 +16,12 @@ public class ReadFromFile {
    */
   public static byte[] readFileByBytes(String fileName) {
     InputStream in = null;
-    ByteArrayOutputStream bos=new ByteArrayOutputStream();
     try {
-      System.out.println("以字节为单位读取文件内容，一次读多个字节：");
-      // 一次读多个字节
-      byte[] tempbytes = new byte[100];
-      int byteread = 0;
       in = new FileInputStream(fileName);
       byte[] buffer=new byte[in.available()];
       ReadFromFile.showAvailableBytes(in);
       // 读入多个字节到字节数组中，byteread为一次读入的字节数
-      while ((byteread = in.read(tempbytes)) != -1) {
-        bos.write(buffer, 0, byteread);
+      while (in.read(buffer) != -1) {
       }
       return buffer;
     } catch (Exception e1) {
