@@ -165,8 +165,29 @@
       </plugin>
     </plugins>
   </build>
+  <repositories>
+    <repository>
+      <!-- Maven 自带的中央仓库使用的Id为central 如果其他的仓库声明也是用该Id
+      就会覆盖中央仓库的配置 --> <id>mvnrepository</id>
+      <name>mvnrepository</name>
+      <url>https://mvnrepository.com/artifact</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <dependencies>
+    <!-- https://mvnrepository.com/artifact/io.vertx/vertx-core -->
+    <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-core</artifactId>
+      <version>4.0.0</version>
+    </dependency>
     <dependency>
       <groupId>org.java-websocket</groupId>
       <artifactId>Java-WebSocket</artifactId>
@@ -177,6 +198,17 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.json/json -->
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20210307</version>
+    </dependency>
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.73</version>
     </dependency>
   </dependencies>
 

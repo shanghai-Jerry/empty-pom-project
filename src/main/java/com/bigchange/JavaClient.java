@@ -15,21 +15,27 @@ import java.util.Map;
 
 public class JavaClient {
 
+
+  private String url;
+
+  public JavaClient(String url) {
+    this.url = url;
+  }
+
   /**
    * 获取客户端连接实例
-   * @param uri
    * @return
    */
-  public WebSocketClient getClient(String uri){
+  public WebSocketClient getClient(String token){
 
     try {
 
-      Map<String, String> httpHeaders = new HashMap<String, String>();
+      Map httpHeaders = new HashMap<String, String>();
 
-      httpHeaders.put("Authorization", "Bearer xxxx");
+      httpHeaders.put("Authorization",  token);
 
       //创建客户端连接对象
-      WebSocketClient client = new WebSocketClient(new URI(uri), httpHeaders) {
+      WebSocketClient client = new WebSocketClient(new URI(this.url), httpHeaders) {
 
         /**
          * 建立连接调用
@@ -46,6 +52,7 @@ public class JavaClient {
          */
         @Override
         public void onMessage(String s) {
+
           System.out.println("收到来自服务端的消息:::" + s);
         }
 
